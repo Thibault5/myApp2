@@ -48,4 +48,4 @@ jobs:
         run: npm run ci:frontend:test
       # Runs test back
       - name: Test back
-	run: chmod +x mvnw && npm run ci:backend:test
+      	run: chmod +x mvnw && npm run ci:backend:test
