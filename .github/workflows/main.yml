@@ -45,4 +45,4 @@ jobs:
         run: npm install
       # Runs tests front
       - name: Tests front
-        npm run ci: frontend:test
+        run npm run ci: frontend:test
