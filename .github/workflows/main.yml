@@ -43,7 +43,3 @@ jobs:
       # Runs a set of commands using the runners shell
       - name: Install node.js packages
         run: npm install
-      # Runs tests front
-      - name: Tests front
-         npm run ci:frontend:test
-        
