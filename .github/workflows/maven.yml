@@ -26,3 +26,22 @@ jobs:
       run: mvn test
     - name: TI
       run: mvn integration-test
+    - name: Cache Maven packages
+      uses: actions/cache@v1
+      with:
+        path: ~/.m2
+        key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
+        restore-keys: ${{ runner.os }}-m2
+    - name: Build and analyze
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
+        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+      run: mvn -B org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=Mikaline_MyAppli
+    - name : Check out repository
+      uses : actions/checkout@v2
+    - name : Deploy to Heroku
+      uses : akhileshns/heroku-deploy@v3.12.12
+      with :
+        heroku_api_key: 5f190842-ac68-4ab0-b9b6-fefbd3169a37
+        heroku_app_name: gentle-badlands-10488
+        heroku_email: cauchet@3il.fr
