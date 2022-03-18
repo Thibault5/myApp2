@@ -52,3 +52,6 @@ jobs:
       # .jar prod
       - name: jar
         run: ./mvnw -ntp verify -DskipTests --batch-mode "-Pprod" "-Pe2e" "-Denforcer.skip=true"
+      # docker
+      - name: docker
+        run: npm run ci:e2e:prepare:docker
